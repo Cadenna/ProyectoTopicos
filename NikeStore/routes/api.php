@@ -24,13 +24,14 @@ Route::get('/product/{id}',[ProductController::class, 'show']);
 Route::post('/product/edit/{id}',[ProductController::class, 'edit']);
 Route::post('/product/destroy/{id}',[ProductController::class, 'destroy']);
 Route::get('/search/product', [ProductController::class, 'search']);
-Route::post('/cart', [PurchaseController::class, 'index']);
 Route::get('/product/category/{id}', [ProductController::class, 'showCategory']);
 
 
 Route::middleware('auth:api')->group( function (){
   //  Route::get('student_index', [StudentController::class, 'index']);
   Route::post('/cartCreate', [PurchaseController::class, 'store']);
+  Route::get('/cart', [PurchaseController::class, 'index']);
+  Route::delete('/cart/{purchase}', [PurchaseController::class, 'destroy']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function(Request $request){

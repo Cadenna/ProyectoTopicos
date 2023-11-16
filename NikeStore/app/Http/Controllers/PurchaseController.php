@@ -37,4 +37,13 @@ class PurchaseController extends Controller
             'purchases' => $purchases,
         ]);
     }
+
+    public function destroy(Purchase $purchase)
+    {
+        $purchase->delete();
+
+        return response()->json([
+            'message' => 'Purchase deleted successfully!',
+        ]);
+    }
 }

@@ -40,4 +40,5 @@ class CartController extends Controller
             'purchases' => $purchases,
         ]);
     }
+
 }

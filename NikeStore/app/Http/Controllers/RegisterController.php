@@ -37,11 +37,11 @@ class RegisterController extends ResponseController
         if(Auth::attempt(['email' =>$request->email,
         'password' => $request->password])){
             $user = Auth::user();
-            $success['token'] = $user->createToken('MyApp')
-            ->accessToken;
+            $success['token'] = $user->createToken('MyApp')->accessToken;
             $success['name'] = $user->name;
-            return $this->sendResponse($success,
-            'User register succesfully');
+            $success['id'] = $user->id; 
+
+            return $this->sendResponse($success, 'User register succesfully');
         }
         else {
             return $this->sendError('Unauthorised',
